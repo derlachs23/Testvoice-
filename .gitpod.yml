@@ -1,0 +1,22 @@
+# .gitpod.yml
+
+image:
+  file: .gitpod.Dockerfile # Verwendet ein benutzerdefiniertes Dockerfile
+
+tasks:
+  - name: Install Dependencies and Prepare Environment
+    init: |
+      python3 -m venv venv
+      source venv/bin/activate
+      pip install --upgrade pip
+      pip install coqui-tts==0.20.0 # Spezifische Version zur Vermeidung von Abhängigkeitskonflikten
+      # Optional: Installiere weitere Pakete, die für Demos oder spezifische Anwendungsfälle benötigt werden
+      # pip install soundfile torchaudio
+    command: |
+      source venv/bin/activate
+      echo "GitPod-Umgebung für XTTS-v2 ist bereit."
+      echo "Sie können nun Python-Skripte ausführen oder den XTTS-v2-Demo-Server starten."
+
+ports:
+  - port: 8000 # Beispiel-Port, falls Sie eine Web-UI oder API starten
+    onOpen: ignore # Ignoriert das automatische Öffnen des Ports im Browser
