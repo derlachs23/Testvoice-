@@ -21,7 +21,7 @@ reference_audio_path = "./reference_audio.wav"
 # Überprüfen, ob die Referenz-Audiodatei existiert
 if not os.path.exists(reference_audio_path):
     print(f"Fehler: Referenz-Audiodatei '{reference_audio_path}' nicht gefunden.")
-        print("Bitte legen Sie eine kurze WAV-Datei (ca. 6-10 Sekunden) mit der zu klonenden Stimme an.")
+  print("Bitte legen Sie eine kurze WAV-Datei (ca. 6-10 Sekunden) mit der zu klonenden Stimme an.")
             print("Beispiel: Sie können eine Sprachaufnahme mit Ihrem Smartphone machen und hier hochladen.")
             else:
                 # Text, der in der geklonten Stimme gesprochen werden soll
