@@ -9,7 +9,7 @@ tasks:
       python3 -m venv venv
       source venv/bin/activate
       pip install --upgrade pip
-      pip install coqui-tts==0.20.0 # Spezifische Version zur Vermeidung von Abhängigkeitskonflikten
+      pip install coqui-tts==0.27.0 # Spezifische Version zur Vermeidung von Abhängigkeitskonflikten
       # Optional: Installiere weitere Pakete, die für Demos oder spezifische Anwendungsfälle benötigt werden
       # pip install soundfile torchaudio
     command: |
