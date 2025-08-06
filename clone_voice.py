@@ -50,4 +50,3 @@ if not os.path.exists(reference_audio_path):
                                                                                                                             print(f"Generiertes Audio gespeichert unter: {output_path_default}")
 
                                                                                                                             print("Skript beendet.")
-                                                                                                    tex                                                                                                     file_pat
