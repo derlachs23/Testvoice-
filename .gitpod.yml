@@ -9,9 +9,13 @@ tasks:
       python3 -m venv venv
       source venv/bin/activate
       pip install --upgrade pip
-      pip install coqui-tts==0.27.0 # Spezifische Version zur Vermeidung von Abhängigkeitskonflikten
+      # Installiere die korrekte TTS-Bibliothek. 'coqui-tts' ist veraltet und die Version 0.27.0 existiert nicht.
+      pip install TTS==0.22.0
       # Optional: Installiere weitere Pakete, die für Demos oder spezifische Anwendungsfälle benötigt werden
       # pip install soundfile torchaudio
+      # Akzeptiere die Coqui TTS-Lizenzbedingungen vorab, indem das Modell heruntergeladen wird.
+      # 'yes' beantwortet die Lizenzabfrage automatisch mit 'y'.
+      yes | tts --model_name "tts_models/multilingual/multi-dataset/xtts_v2" --text "test" --out_path "/tmp/test.wav" && rm "/tmp/test.wav"
     command: |
       source venv/bin/activate
       echo "GitPod-Umgebung für XTTS-v2 ist bereit."
