@@ -1,1 +1,4 @@
-git-filter-repo==2.47.0
+coqui-tts
+soundfile
+numpy
+gradio
