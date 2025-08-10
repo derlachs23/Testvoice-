@@ -26,16 +26,15 @@ def voice_cloning_interface(text, reference_audio):
     print(f"Ausgabepfad: {output_path}")
 
     # Zeige eine Ladeanzeige in der GUI
-    yield None, "Klon-Vorgang wird gestartet... (Modell wird initialisiert, das kann dauern)"
+    yield None, "Klon-Vorgang wird gestartet..."
 
-    result_path = clone_voice(text, reference_audio, output_path)
-
-    if os.path.exists(result_path):
+    try:
+        result_path = clone_voice(text, reference_audio, output_path)
         print(f"Prozess beendet. Ergebnis: {result_path}")
         yield result_path, "Stimme erfolgreich geklont!"
-    else:
-        print(f"Fehler beim Klonen: {result_path}")
-        yield None, f"Ein Fehler ist aufgetreten: {result_path}"
+    except (FileNotFoundError, RuntimeError) as e:
+        print(f"Fehler beim Klonen: {e}")
+        yield None, f"Ein Fehler ist aufgetreten: {e}"
 
 # Gradio-Oberfläche definieren
 with gr.Blocks(theme=gr.themes.Soft()) as demo:
