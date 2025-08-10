@@ -67,12 +67,12 @@ def test_voice_cloning_interface_no_text():
     gen = voice_cloning_interface(None, "dummy_audio.wav")
     result_path, status_message = next(gen)
     assert result_path is None
-    assert "Bitte geben Sie einen Text ein" in status_message
+    assert "Fehler: Bitte geben Sie einen Text ein." in status_message
 
     gen = voice_cloning_interface("  ", "dummy_audio.wav")
     result_path, status_message = next(gen)
     assert result_path is None
-    assert "Bitte geben Sie einen Text ein" in status_message
+    assert "Fehler: Bitte geben Sie einen Text ein." in status_message
 
 def test_voice_cloning_interface_no_audio():
     """
@@ -122,7 +122,7 @@ def test_voice_cloning_interface_failure(mock_exists, mock_clone_voice, temp_dir
     ref_audio_path.touch()
     
     error_message = "Klonen fehlgeschlagen"
-    mock_clone_voice.return_value = error_message
+    mock_clone_voice.side_effect = RuntimeError(error_message)
     mock_exists.return_value = False # Simuliert, dass die Ausgabedatei nicht erstellt wurde
 
     gen = voice_cloning_interface("test text", str(ref_audio_path))

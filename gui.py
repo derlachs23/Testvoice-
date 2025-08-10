@@ -13,9 +13,11 @@ def voice_cloning_interface(text, reference_audio):
     Nimmt Text und eine Referenz-Audiodatei entgegen und gibt den Pfad zur geklonten Audiodatei zurück.
     """
     if text is None or text.strip() == "":
-        return None, "Fehler: Bitte geben Sie einen Text ein."
+        yield None, "Fehler: Bitte geben Sie einen Text ein."
+        return
     if reference_audio is None:
-        return None, "Fehler: Bitte laden Sie eine Referenz-Audiodatei hoch."
+        yield None, "Fehler: Bitte laden Sie eine Referenz-Audiodatei hoch."
+        return
 
     # Eindeutigen Namen für die Ausgabedatei generieren
     output_filename = f"{os.path.basename(reference_audio).split('.')[0]}_cloned.wav"
